@@ -1,0 +1,48 @@
+<% layout('layouts/boilerplate.ejs') %>
+
+<div class="row">
+    <% campgrounds.forEach(function(campground) { %>
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="card shadow border-0 mt-4">
+            <a href="/campgrounds/<%=campground._id%>"><img class="card-img-top" style="width:100%; height:300px";
+                    src="<%=campground.images[0].url%>"></a>
+
+            <div class="card-body">
+                <h5 class="card-title text-capitalize">
+                    <a href="/campgrounds/<%= campground._id %>"><%= campground.title %></a>
+                    <% if (campground.price <= 50) { %>
+                    <small class="text-muted" style="float: right;">$</small>
+                    <% } else if (campground.price < 100) { %>
+                    <small class="float-right text-muted" style="float: right;">$$</small>
+                    <% } else { %>
+                    <small class="float-right text-muted" style="float: right;">$$$</small>
+                    <% } %>
+                </h5>
+
+                <div class="card-subtitle">
+                    <% if(!campground.reviews.length) {%>
+                    <span class="text-muted">No Reviews</span>
+                    <% }else {%>
+                    <% const stars = ['<i class="far fa-star text-danger "></i>', '<i class="far fa-star text-danger "></i>', '<i class="far fa-star text-danger "></i>', '<i class="far fa-star text-danger "></i>', '<i class="far fa-star text-danger "></i>'] %>
+                    <% for(let i = 0; i < campground.ratingAvg; i++) { %>
+                    <% stars[i] = '<i class="fas fa-star text-danger "></i>' %>
+                    <% } %>
+                    <% for(let i = 0; i < stars.length; i++) { %>
+                    <%- stars[i] %>
+                    <% } %>
+                    <span class="text-muted"><%- campground.ratingCount %> Review</span>
+                    <% } %>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <% }) %>
+</div>
+
+<script>
+    const mapToken = `<%-process.env.MAPBOX_TOKEN%>`;
+    const campgrounds = { features: `<%-JSON.stringify(campgrounds)%>` }
+</script>
+
+<script src="/javascripts/clusterMap.js"></script>

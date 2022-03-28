@@ -1,0 +1,38 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-danger">
+    <div class="container-fluid">
+        <% if(!currentUser) {%>
+        <a class="navbar-brand" href="/">YelpCamp</a>
+        <% }else {%>
+        <a class="navbar-brand" href="/campgrounds">YelpCamp</a>
+        <% } %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style='font-size: larger;'>
+            <div class="navbar-nav">
+                <a class="nav-link <%= currentPath === '/campgrounds' ? 'active' : '' %>"
+                    href="/campgrounds">Campgrounds</a>
+                <a class="nav-link <%= currentPath === '/campgrounds/new' ? 'active' : '' %>"
+                    href="/campgrounds/new">New</a>
+            </div>
+            <div class="navbar-nav ms-auto me-5">
+                <% if(!currentUser) {%>
+                <a class="nav-link <%= currentPath === '/login' ? 'active' : '' %>" href="/login">Login</a>
+                <a class="nav-link <%= currentPath === '/register' ? 'active' : '' %>" href="/register">Sign Up</a>
+                <% } else{ %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                        <%= currentUser.username %>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+                    </ul>
+                </li>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</nav>

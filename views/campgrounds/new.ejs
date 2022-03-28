@@ -1,0 +1,114 @@
+<% layout('layouts/boilerplate.ejs') %>
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col-12 col-sm-12 col-lg-8">
+        <div class="card shadow border-0">
+            <div class="card-body">
+                <h1 class="text-center">Create Campground</h1>
+                <!-- enctype is used to take multiple files as input  -->
+                <form action="/campgrounds" method="POST" novalidate class="validated-form"
+                    enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label" for="title">Title</label>
+                        <input class="form-control" type="text" name="campground[title]" id="title" placeholder="Title"
+                            required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a campground title.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="location">Location</label>
+                        <input class="form-control" type="text" name="campground[location]" id="location"
+                            placeholder="Yosemite National Park, CA" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a valid location
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="price">Price/Night</label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="price-label">$</span>
+                            <input type="text" class="form-control" id="price" placeholder="Price/Night"
+                                aria-label="price" aria-describedby="price-label" name="campground[price]" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a price.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea class="form-control" type="text" name="campground[description]" id="description"
+                            rows="3" required></textarea>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a description of your campground.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input class="form-control" type="text" name="campground[phone]" id="phone"
+                            placeholder="123-456-7891" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a phone number.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="">Booking Window</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="campground[booking][start]"
+                                    placeholder="Starting Month" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please provide a booking window.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="campground[booking][end]"
+                                    placeholder="Ending Month" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="image">Images</label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" name="image" id="image" multiple required>
+                            <div class="invalid-feedback">
+                                Please upload an image of your campground.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 mb-2">
+                        <button type="submit" class="btn btn-danger">Submit</button>
+                    </div>
+                </form>
+                <a href="/campgrounds">Go Back</a>
+            </div>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>
+<!-- <script>
+    const file = document.querySelector('input[type="file"]');
+    file.addEventListener('change', (event) => {
+        file.innerHTML = "chetan";
+        console.log(file.files);
+    });
+</script> -->
