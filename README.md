@@ -1,5 +1,5 @@
-# YelpCamp
-Yelpcamp is a website where a user can create and review the campgrounds.In order to create or review any campground you must have an account.
+# GoCamp
+GoCamp is a website where a user can create and review the campgrounds.In order to create or review any campground you must have an account.
 
 This project was created using Node.js, Express, Mongoose, MongoDB and Bootstrap.
 
